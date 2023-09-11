@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spicy invader", "spicy invader\spicy invader.csproj", "{FAFA183E-7A76-48FF-97E6-D06A89A6C8C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAFA183E-7A76-48FF-97E6-D06A89A6C8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAFA183E-7A76-48FF-97E6-D06A89A6C8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAFA183E-7A76-48FF-97E6-D06A89A6C8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAFA183E-7A76-48FF-97E6-D06A89A6C8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC71E7DA-D6F0-4166-BF35-8BEA5B43D08B}
+	EndGlobalSection
+EndGlobal

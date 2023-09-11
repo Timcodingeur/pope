@@ -1,0 +1,15 @@
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\bin\Debug\net6.0\spicy invader.exe
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\bin\Debug\net6.0\spicy invader.deps.json
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\bin\Debug\net6.0\spicy invader.runtimeconfig.json
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\bin\Debug\net6.0\spicy invader.dll
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\bin\Debug\net6.0\spicy invader.pdb
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.csproj.AssemblyReference.cache
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.AssemblyInfoInputs.cache
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.AssemblyInfo.cs
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.csproj.CoreCompileInputs.cache
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.dll
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\refint\spicy invader.dll
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.pdb
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\spicy invader.genruntimeconfig.cache
+C:\Users\pw67ehi\Desktop\oui\projet spacy invader\spicy invader\spicy invader\obj\Debug\net6.0\ref\spicy invader.dll
