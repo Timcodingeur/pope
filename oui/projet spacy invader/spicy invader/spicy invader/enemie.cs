@@ -8,12 +8,14 @@
         private List<Tirs> tirsEnemi = new List<Tirs>();
         public bool titre = false;
         ConsoleColor color = ConsoleColor.Gray;
-
+        public static List<Enemie> enemies = new List<Enemie>();
+        public static List<Enemie> enemiesToRemove = new List<Enemie>();
+        public int jouLife = 5;
         public int x = 0;
         public int y;
-
+        public int NumberEnemy = 20;
         public string skin = "-0_0-";
-
+        public byte life = 3;
         public void MoveRight()
         {
 
@@ -32,6 +34,7 @@
                 Console.Write(skin);
                 x++;
                 Mouvement();
+                
             }
 
         }
@@ -49,31 +52,52 @@
                 Console.Write(skin);
                 x--;
                 Mouvement();
+             
             }
 
         }
         public void Mouvement()
-        {
-            if (skin == "-0_0-")
+        { 
+            switch (skin)
             {
-                skin = "^0^0^";
+                case "-0_0-":
+                    skin = "^0^0^";
+                    break;
+                case "^0^0^":
+                    skin = "-0_0-";
+                    break;
+                case ">-_-<":
+                    skin = ">^-^<";
+                    break;
+                case ">^-^<":
+                    skin = ">-_-<";
+                    break;
+                default:
+                    skin = "^0^0^";
+                    break;
+            }
+            
+            switch(life)
+            {
+                case 3:
+                    color = ConsoleColor.White;
+                    break;
+                case 2:
+                    color = ConsoleColor.Green;
+                    break;
+                case 1:
+                    color = ConsoleColor.Red;
+                    break;
+                case 0:
+                    enemiesToRemove.Add(this);
+                    Console.SetCursorPosition(x-1, y);
+                    Console.Write("     ");
+                    NumberEnemy--;
+                    break;
+
 
             }
-            else
-                                   if (skin == "^0^0^")
-            {
-                skin = "-0_0-";
 
-            }
-            else if (skin == ">-_-<")
-            {
-
-                skin = ">^-^<";
-            }
-            else if (skin == ">^-^<")
-            {
-                skin = ">-_-<";
-            }
         }
         public void ClearPositionRight()
         {
@@ -85,146 +109,171 @@
             Console.SetCursorPosition(x+1, y);
             Console.Write("     ");
         }
-        public static Enemie[,] enemy = new Enemie[5, 4];
+        
         public static void LancerEn()
         {
-            
-
-            
             for (int j = 0; j < 4; j++)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    enemy[i, j] = new Enemie();
+                    Enemie en = new Enemie();
                     if (j % 2 == 0)
                     {
-                        enemy[i, j].skin = "-0_0-";
+                        en.skin = "-0_0-";
                     }
                     else
                     {
-                        enemy[i, j].skin = ">-_-<";
+                        en.skin = ">-_-<";
                     }
 
-                    // Ajustez ces valeurs pour positionner vos ennemis
-                    enemy[i, j].y = j * 2;
-                    enemy[i, j].x = i * 8;
-                    enemy[i, j].MoveRight();
+                    en.y = j * 2;
+                    en.x = i * 8;
+                    en.MoveRight();
+
+                    enemies.Add(en);
                 }
             }
-           
-
         }
-       
+
+
         public static int direction = 1; // 1 pour droite, -1 pour gauche
         public static int movesBeforeDrop = Console.WindowWidth-40;
         public static int currentMoves = 0;
         public static int tick = 0;
+
+        public List<Tirs> TirsEnemi { get => tirsEnemi; set => tirsEnemi = value; }
+      
         
-        public  void moove()
+        public void moove()
         {
+            
             Random Tir_enemie = new Random();
             int tirus = Tir_enemie.Next(20);
-            int ix = Tir_enemie.Next(0, 5);
-            int iy = Tir_enemie.Next(0, 4);
+
+            // Sélectionne un ennemi au hasard pour tirer
+            Enemie randomEnemy = null;
+            if (enemies.Count > 0)
+            {
+                randomEnemy = enemies[Tir_enemie.Next(enemies.Count)];
+            }
+
             tick++;
-            if (tick == 20)
+
+            if (tick >= 20)
             {
                 if (direction == 1)
                 {
-                    for (int j = 0; j < 4; j++)
+                    foreach (var en in enemies)
                     {
-                        for (int i = 0; i < 5; i++)
-                        {
-                            if (enemy[i, j] != null)
-                            {
-                                enemy[i, j].MoveRight();
-                            }
-                        }
+                        en.MoveRight();
                     }
-                    Thread.Sleep(1);
                 }
                 else if (direction == -1)
                 {
-                    for (int j = 0; j < 4; j++)
+                    foreach (var en in enemies)
                     {
-                        for (int i = 0; i < 5; i++)
-                        {
-                            if (enemy[i, j] != null)
-                            {
-                                enemy[i, j].MoveLeft();
-                            }
-                        }
+                        en.MoveLeft();
                     }
-                    Thread.Sleep(1);
                 }
-                currentMoves++;
+               
+
+
                 tick = 0;
+                currentMoves++;
             }
-           if(tirus==19)
+            foreach (var enemyToRemove in Enemie.enemiesToRemove)
+            {
+              
+                
+                Enemie.enemies.Remove(enemyToRemove);
+            }
+            Enemie.enemiesToRemove.Clear();  // Videz la liste temporaire
+
+            if (tirus == 19 && randomEnemy != null)
             {
                 try
                 {
-                    Tirs tirer = new Tirs { titre = false, Y = enemy[ix, iy].y, X = enemy[ix, iy].x };
-                    tirsEnemi.Add(tirer);
-                    
+                    Tirs tirer = new Tirs { titre = false, Y = randomEnemy.y, X = randomEnemy.x };
+                    TirsEnemi.Add(tirer);
                 }
                 catch
                 {
-
+                    // Gérer l'exception si nécessaire
                 }
             }
-            for (int i = 0; i < tirsEnemi.Count; i++)
+            
+
+            for (int i = 0; i < TirsEnemi.Count; i++)
             {
-                tirsEnemi[i].Tir();
+                TirsEnemi[i].Tir();
 
                 // Si le tir est hors de l'écran, supprimez-le de la liste
-                if (tirsEnemi[i].Y >= Console.WindowHeight)
+                if (TirsEnemi[i].Y >= Console.WindowHeight)
                 {
-                    Console.SetCursorPosition(tirsEnemi[i].X-1, tirsEnemi[i].Y);
+                    Console.SetCursorPosition(TirsEnemi[i].X - 1, TirsEnemi[i].Y);
                     Console.Write("    ");
-                    tirsEnemi.RemoveAt(i);
+                    TirsEnemi.RemoveAt(i);
                     i--; // Ajustez l'index après avoir supprimé un élément
-
                 }
             }
             
+
+            for (int i = 0; i < TirsEnemi.Count; i++)
+            {
+                Tirs t = TirsEnemi[i];
+                Joueur currentPlayer = Joueur.CurrentPlayer;
+
+                
+                bool hit = false;
+
+                // Vérifiez chaque ligne du design du joueur
+                for (int j = 0; j < Joueur.playerDesign.Length && !hit; j++)
+                {
+                    // Vérifiez chaque caractère de la ligne
+                    for (int k = 0; k < Joueur.playerDesign[j].Length; k++)
+                    {
+                        if (t.Y == currentPlayer.y + j && t.X == currentPlayer.x + k && Joueur.playerDesign[j][k] != ' ')
+                        {
+                            hit = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (hit)
+                {
+                    jouLife--;  // Diminuez la vie du joueur. Notez que nous utilisons 'currentPlayer.jouLife' ici.
+
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine(jouLife);  // Affichez la vie du joueur en utilisant 'currentPlayer.jouLife'.
+
+                    TirsEnemi.RemoveAt(i);
+                    i--;
+                    Console.SetCursorPosition(t.X, t.Y);
+                    Console.Write(" ");
+                }
+            }
+
             if (currentMoves >= movesBeforeDrop)
             {
-                if (direction == 1)
+                foreach (var en in enemies)
                 {
-                    for (int x = 0; x < 4; x++)
+                    if (direction == 1)
                     {
-                        for (int i = 0; i < 5; i++)
-                        {
-                            enemy[i, x].ClearPositionRight();
-
-
-
-                            enemy[i, x].y++;
-                        }
+                        en.ClearPositionRight();
                     }
+                    else
+                    {
+                        en.ClearPositionLeft();
+                    }
+                    en.y++;
                 }
 
-                else if (direction == -1)
-                {
-                    for (int x = 0; x < 4; x++)
-                    {
-                        for (int i = 0; i < 5; i++)
-                        {
-
-
-
-                            enemy[i, x].ClearPositionLeft();
-                            enemy[i, x].y++;
-                        }
-                    }
-                }
                 direction = -direction;
                 currentMoves = 0;
-
             }
-            
         }
+
     }
 }
 

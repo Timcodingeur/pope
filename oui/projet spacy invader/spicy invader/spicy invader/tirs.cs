@@ -14,6 +14,7 @@
 
         public void Tir()
         {
+            ConsoleColor color= ConsoleColor.White;
             Joueur oui = new Joueur();
             if (titre == false)
             {
@@ -28,7 +29,7 @@
                     Console.Write(skin);
                     if(oui.x==X&&oui.y==Y)
                     {
-                        Console.WriteLine("bob");
+                        Console.Write("bob");
                     }
                 }
                 else

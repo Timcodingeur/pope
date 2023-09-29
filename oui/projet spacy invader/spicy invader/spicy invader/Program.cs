@@ -7,8 +7,8 @@
             while (true)
             {
 
-                gameEngine gameengine = new gameEngine();
-                gameengine.Start();
+                GameEngine.ShowMainMenu();
+
             }
         }
 
