@@ -27,10 +27,7 @@
 
                     Console.SetCursorPosition(X, Y);
                     Console.Write(skin);
-                    if(oui.x==X&&oui.y==Y)
-                    {
-                        Console.Write("bob");
-                    }
+                    
                 }
                 else
                 {

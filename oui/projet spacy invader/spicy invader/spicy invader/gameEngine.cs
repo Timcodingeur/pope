@@ -31,6 +31,7 @@ namespace enemie
             {
                 case "1":
                     Console.Clear();
+
                     new GameEngine().Start();
                     break;
                 case "2":
@@ -56,7 +57,7 @@ namespace enemie
         public void Start()
         {
            
-            Enemie.LancerEn();
+        Enemie.LancerEn();
             jeux.apparait();
             while (true)
             {
@@ -75,7 +76,7 @@ namespace enemie
                     Console.ReadLine();
                     break;
                 }
-                if(enemie.jouLife==0)
+                if(enemie.jouLife<=0)
                 {
                     Enemie.enemies.Clear();
                     Console.WriteLine("");

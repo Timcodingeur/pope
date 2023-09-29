@@ -109,7 +109,10 @@
             Console.SetCursorPosition(x+1, y);
             Console.Write("     ");
         }
-        
+        public static int direction = 1; // 1 pour droite, -1 pour gauche
+        public static int movesBeforeDrop = Console.WindowWidth - 40;
+        public static int currentMoves = 0;
+        public static int tick = 0;
         public static void LancerEn()
         {
             for (int j = 0; j < 4; j++)
@@ -133,13 +136,14 @@
                     enemies.Add(en);
                 }
             }
+            direction = 1; // 1 pour droite, -1 pour gauche
+            movesBeforeDrop = Console.WindowWidth - 40;
+            currentMoves = 0;
+            tick = 0;
         }
 
 
-        public static int direction = 1; // 1 pour droite, -1 pour gauche
-        public static int movesBeforeDrop = Console.WindowWidth-40;
-        public static int currentMoves = 0;
-        public static int tick = 0;
+       
 
         public List<Tirs> TirsEnemi { get => tirsEnemi; set => tirsEnemi = value; }
       
