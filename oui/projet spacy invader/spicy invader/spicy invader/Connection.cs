@@ -1,7 +1,4 @@
 ﻿using System.Data;
-using MySql;
-using System;
-using MySql.Data;
 
 using MySql.Data.MySqlClient;
 namespace enemie
@@ -14,17 +11,20 @@ namespace enemie
 
         public static void Connect()
         {
+            //defini les paramètre de connection
             string server = "localhost";
             string database = "db_space_invaders";
             string user = "root";
             string password = "root";
             string port = "6033";
-
+           
             Console.Clear();
+            //créé la variable de connection
             string connString = String.Format("server={0};port={1};user id={2}; password={3}; database={4};", server, port, user, password, database);
 
 
             MySqlConnection conn = new(connString);
+            //verifie la coo
             try
             {
                 conn.Open();
@@ -38,7 +38,7 @@ namespace enemie
                 Console.WriteLine(e.Message + connString);
             }
 
-
+            //fait le select de nombre de point et joueur dans la db
             string createUserQuery = $"SELECT jouPseudo, jouNombrePoints FROM `t_joueur` order by jouNombrePoints desc limit 5;";
 
             // Assurez-vous que la connexion est ouverte.
